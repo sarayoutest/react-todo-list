@@ -1,0 +1,237 @@
+:root {
+  --bg: #f4f4f4;
+  --text: #222;
+  --card: #fff;
+  --primary: #4caf50;
+  --delete: #e53935;
+  --toggle: #333;
+  --box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+  --border-radius: 12px;
+  --transition: 0.3s ease;
+  --font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+}
+
+.dark {
+  --bg: #121212;
+  --text: #eee;
+  --card: #1e1e1e;
+  --primary: #81c784;
+  --delete: #ef5350;
+  --toggle: #eee;
+  --box-shadow: none;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  font-family: var(--font-family);
+  background-color: var(--bg);
+  color: var(--text);
+  transition: background-color var(--transition), color var(--transition);
+
+}
+body {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh; 
+  background-color: var(--bg);
+  color: var(--text);
+  font-family: var(--font-family);
+  transition: background-color 0.3s, color 0.3s;
+}
+
+.app {
+  width:100%;
+  max-width: 1200px; 
+  background-color: var(--card);
+  padding: 40px 30px;
+  border-radius: var(--border-radius);
+  box-shadow: var(--box-shadow);
+  transition: box-shadow var(--transition), background-color var(--transition);
+  box-sizing: border-box;
+  margin: auto; 
+}
+
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin-bottom: 25px;
+}
+
+h1 {
+  font-size: 2.4rem;
+  margin: 0;
+  user-select: none;
+}
+
+.mode-toggle {
+  background: none;
+  color: var(--toggle);
+  border: 2px solid var(--toggle);
+  border-radius: var(--border-radius);
+  padding: 8px 16px;
+  font-size: 1.1rem;
+  cursor: pointer;
+  transition: background-color var(--transition), color var(--transition), border-color var(--transition);
+  user-select: none;
+}
+
+.mode-toggle:hover {
+  background-color: var(--toggle);
+  color: var(--card);
+  border-color: var(--toggle);
+}
+
+.input-container {
+  display: flex;
+  gap: 10px;
+  margin: 20px 0;
+  flex-wrap: wrap;
+}
+
+input {
+  flex: 1;
+  padding: 12px ;
+  font-size: 16px;
+  border-radius: 8px;
+  border: none;
+  box-shadow: var(--box-shadow);
+  transition: box-shadow var(--transition);
+  min-width: 0;
+  outline-offset: 2px;
+}
+
+input:focus {
+  box-shadow: 0 0 8px var(--primary);
+}
+
+button {
+  padding: 12px 16px;
+  border: none;
+  border-radius: 8px;
+  background-color: var(--primary);
+  color: white;
+  font-weight: 700;
+  font-size: 1.1rem;
+  cursor: pointer;
+  box-shadow: var(--box-shadow);
+  transition: background-color var(--transition), box-shadow var(--transition);
+}
+
+button:hover {
+  background-color: #3a9d3a;
+  box-shadow: 0 6px 14px rgba(76, 175, 80, 0.6);
+}
+
+ul.task-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+li {
+  background-color: var(--card);
+  margin-bottom: 14px;
+  padding: 18px 24px;
+  border-radius: 10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  box-shadow: var(--box-shadow);
+  word-break: break-word;
+  transition: background-color var(--transition), box-shadow var(--transition);
+  cursor: default;
+}
+
+li.completed span {
+  text-decoration: line-through;
+  opacity: 0.5;
+  user-select: none;
+  color: var(--toggle);
+}
+
+li span {
+  flex: 1;
+  cursor: pointer;
+  font-size: 1.1rem;
+  user-select: text;
+}
+
+li div button {
+  margin-left: 8px;
+  font-size: 1.1rem;
+  padding: 8px 14px;
+  border-radius: 8px;
+  cursor: pointer;
+  border: none;
+  transition: background-color var(--transition);
+  user-select: none;
+}
+
+.delete {
+  background-color: var(--delete);
+  color: white;
+  box-shadow: 0 4px 10px rgba(229, 57, 53, 0.4);
+}
+
+.delete:hover {
+  background-color: #b71c1c;
+  box-shadow: 0 6px 14px rgba(183, 28, 28, 0.7);
+}
+
+@media (max-width: 900px) {
+  .app {
+    padding: 30px 20px;
+  }
+  
+  h1 {
+    font-size: 2rem;
+  }
+
+  .input-container {
+    flex-direction: column;
+  }
+
+  input, button, .mode-toggle {
+    width: 100%;
+  }
+
+  li {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 10px;
+    padding: 16px 18px;
+  }
+
+  li div {
+    align-self: flex-end;
+  }
+}
+
+@media (max-width: 500px) {
+  .header {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  h1 {
+    font-size: 1.6rem;
+  }
+  .input-container {
+    flex-direction: column;
+  }
+
+  input, button {
+    width: 100%;
+  }
+}
+@media (max-width: 1200px) {
+  .app {
+    max-width: 90%;
+  }
+}
